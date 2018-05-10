@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { BusService } from '../../services/bus.service';
 
 @Component({
   selector: 'page-settings',
@@ -10,15 +11,12 @@ export class SettingsPage {
   searchQuery: string = '';
   items: string[];
 
-  constructor(public navCtrl: NavController) {
-    this.initializeBusItems();
+  constructor( private busApi: BusService) {
+  //private navCtrl: NavController,
   }
 
   initializeBusItems() {
-    this.items = [
-      '45',
-      '46',
-    ];
+    this.items = this.busApi.getBus();
   }
 
   getBus(ev: any) {
